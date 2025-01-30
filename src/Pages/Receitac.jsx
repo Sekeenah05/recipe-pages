@@ -1,6 +1,6 @@
 
 import Home from "./Home";
- const Receitas = () => {
+ const Receitas = ({recipes}) => {
 
   const recentRecipes = [
     { 
@@ -25,7 +25,7 @@ import Home from "./Home";
   return ( 
     <>
       <div>
-        <Home>
+        <Home recipes={recipes}>
 
           <section className="container mx-auto my-12">
 

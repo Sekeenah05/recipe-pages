@@ -7,3 +7,13 @@ export const getAllRecipes = async () => {
     const data = await response.json();
     return data //to terminate the request
 }
+
+// useEffect(() => {
+//     fetch("https://dummyjson.com/recipes")
+//       .then((response) => response.json())
+//       .then((data) => {
+//         console.log("Fetched data:", data);
+//         setRecipes(data.recipes || data); // Adjust based on API response
+//       });
+//   }, []);
+  
