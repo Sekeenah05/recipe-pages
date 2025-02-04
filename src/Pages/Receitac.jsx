@@ -41,7 +41,7 @@ import Home from "./Home";
                   <div className="p-7">
                     <h3 className="text-lg font-bold text-gray-700">{recipe.title}</h3>
                     <p className="text-gray-400 w-96">{recipe.description}</p>
-                    <button className="rounded-lg px-5 mt-4 " style={{ backgroundColor: '#FFDB63' }} >
+                    <button className="rounded-lg py-1 px-5 mt-4 " style={{ backgroundColor: '#FFDB63' }} >
                       Ver receita
                     </button>
                   </div>
