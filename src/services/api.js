@@ -3,7 +3,7 @@
 // .then(console.log);
 
 export const getAllRecipes = async () => {
-    const response = await fetch('https://dummyjson.com/recipes'); //convert it to js object
+    const response = await fetch('http://localhost:5000/recipes'); //convert it to js object
     const data = await response.json();
     return data //to terminate the request
 }
