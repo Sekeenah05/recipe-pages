@@ -4,9 +4,10 @@ import Home from './Pages/Home'
 import Receitas from './Pages/Receitac'
 import SobreNos from './Pages/SobreNos'
 import RecipeDetail from './components/RecipeDetail'
+import { useEffect, useState } from 'react'
 
 
-const recipes = [
+const fallbackRecipes = [
   {
       id: 1,
       title: "Waffles",
@@ -70,13 +71,13 @@ const recipes = [
       description: "Receita bacana pra comer com os amigos de manhã.",
       image: "/Featured image (2).png",
       ingredients:[
-          "2 xícaras de leite",
-          "1/2 xícara de chocolate em pó",
-          "2 colheres de sopa de açúcar (ou a gosto)",
-          "1/2 colher de chá de extrato de baunilha",
-          "Uma pitada de sal",
-          "Chantilly (opcional)",
-          "Chocolate ralado (opcional)"
+        "2 xícaras de leite",
+        "1/2 xícara de chocolate em pó",
+        "2 colheres de sopa de açúcar (ou a gosto)",
+        "1/2 colher de chá de extrato de baunilha",
+        "Uma pitada de sal",
+        "Chantilly (opcional)",
+        "Chocolate ralado (opcional)"
       ],
       preparation: [
           "Em uma panela, aqueça o leite em fogo médio até que comece a ferver. Mexa ocasionalmente para evitar que o leite grude no fundo da panela.",
@@ -90,8 +91,42 @@ const recipes = [
          " Lembre-se de que você pode ajustar a quantidade de açúcar de acordo com seu gosto pessoal. Além disso, você também pode adicionar outros ingredientes, como canela em pó ou marshmallows, para dar um toque extra ao seu chocolate quente."
       ]
   }
-];
+]
 const App = () => {
+  const [recipes, setRecipes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  
+    useEffect(() => {
+      fetch("https://dummyjson.com/recipes")
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.recipes) {
+            setRecipes(data.recipes);
+          } else {
+            setRecipes(fallbackRecipes); // Use static data if API response is empty
+          }
+        })
+        .catch((error) => {
+          console.error("Erro ao buscar receitas:", error);
+          setRecipes(fallbackRecipes); // Use static data in case of an error
+        })
+        .finally(() => setLoading(false));
+    }, []);
+  
+    if (loading) {
+      return <p>Carregando receitas...</p>;
+    }
+  
+
+  // const [recipes, setRecipes] = useState([]); //stores fetch recipes
+  // useEffect(() => {
+  //   fetch("https://dummyjson.com/recipes")
+  //     .then((response) => response.json())
+  //     .then((data) => setRecipes(data.recipes))  // Assuming `recipes` is inside `data`
+  //     .catch((error) => console.error("Error fetching recipes:", error));
+  // },
+  //  []);
+
   return (
     <>
       <Routes>
