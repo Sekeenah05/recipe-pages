@@ -8,7 +8,7 @@ const RecipeCard = ({id, title,description,image}) => {
                 <div className="p-4">
                     <h2 className="text-lg font-bold text-gray-700 ">{title}</h2>
                     <p className="text-gray-400 mt-1 w-56" >{description}</p>
-                    <button className="rounded-lg px-5 mt-4 " style={{ backgroundColor: '#FFDB63' }} 
+                    <button className="rounded-lg px-10 mt-4 " style={{ backgroundColor: '#FFDB63' }} 
                     onClick={() =>
                         navigate(`/recipe/${id}`)
                     }>ver receita</button>
